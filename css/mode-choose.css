@@ -60,6 +60,12 @@
     border: 2px solid rgb(255, 255, 255);
     border-radius: 5px;
 }
+b{
+    font-size: 25px;
+    font-family: 'Nova Square', cursive;
+    color: rgb(0, 255, 13);
+    font-weight: 700;
+}
 
 .fondo1{
     background-image: url("../imgs/characters/guillem.png");

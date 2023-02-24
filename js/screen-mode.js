@@ -11,7 +11,7 @@ var opacidad = 0;
 var limiteErrores = 0;
 
 if(dificultad == 1){
-    tiempo = 29;
+    tiempo = 129;
     opacidad = 0.4;
     limiteErrores = 3;
     var niveles = seleccionNivelScreenFacil();
@@ -65,9 +65,11 @@ function randomPosition(){
     return {x, y};
 }
 
+var errorNivel = 0;
+
 function startGame() {
-    errorNivel = error;
-    console.log("Inicio nivel " + errorNivel);
+    
+    console.log("Inicio nivel ");
 
     function mostrarVictoria() {
         
@@ -86,11 +88,11 @@ function startGame() {
             divData.style.opacity = "0.9";
         }, 100);
 
-        var tempo = 4;
-        console.log(tempo);
+        
 
         //Crear un contador para el cambio de nivel
 
+        var tempo = 4;
         var temporizador = setInterval(function() {
 
             var mostrar = document.querySelectorAll(".menu-characters-icon");
@@ -106,8 +108,8 @@ function startGame() {
                 if(tempo == 0) {
                     clearInterval(temporizador);
                     tiempoTxt.innerHTML = "";
+                    errorNivel = error;
                     
-                    errorNivel = error
                     location.href = "./game-mode.html";
                 }
                 tempo--;
@@ -121,7 +123,7 @@ function startGame() {
         divData.classList.add("div-data");
                 
         divData.innerHTML = `
-        <h1>¡Se ha acabado el tiempo!</h1>
+        <h1>¡NIVEL FALLIDO!</h1>
         <p class="text-derrota"> Encontrados: </p>
         <p class="text-derrota-datos">${personajesEncontrados}</p>
         <p class="text-derrota"> Niveles: </p>
@@ -143,7 +145,6 @@ function startGame() {
         }
         
         var tempo = 4;
-        console.log(tempo);
 
         //Crear un contador para el cambio de nivel
 
@@ -248,7 +249,7 @@ function startGame() {
         let time = 50;
     
         let cargaPersonajes = setInterval(function() {
-            console.log(time);
+            
             if(time == 0) {
                 clearInterval(cargaPersonajes);
                 for(let i = 0; i < personajes.length; i++) {
@@ -278,16 +279,16 @@ function startGame() {
 
             this.style.display = "none";
             personajesEncontrados++;
+            console.log("Error: " + errorNivel);
 
-            if((errorNivel < 0) || (errorNivel == 0) ) {
+            if((errorNivel <= 0) ) {
                 errorNivel = 0;
-                console.log("Personaje-2: " + errorNivel);
+                //console.log("Personaje-2: " + errorNivel);
             }else{
-                errorNivel--;
                 console.log("Personaje-2: " + errorNivel);
             }
 
-            console.log("Personaje" + error);
+            console.log("Personaje salida" + error);
             
             //Ocultar el personaje encontrado del array de personajes
 
@@ -302,25 +303,6 @@ function startGame() {
             // Si el contador de personajes encontrados es igual al numero de personajes del nivel
 
             if(personajes.length==0) {
-
-                var divData = document.createElement("div");
-                divData.classList.add("div-data");
-                if(errorNivel<0){
-                    errorNivel = 0;
-                }
-                
-                divData.innerHTML = `
-                <h1>¡NIVEL SUPERADO!</h1>
-                <p class="text-victoria">Te han sobrado: </p>
-                <p class="text-victoria-datos"> ${cronometro}s </p>
-                <p class="text-derrota"> MissClick's: </p>
-                <p class="text-derrota-datos">${errorNivel} / ${limiteErrores}</p>
-                `;
-                document.getElementById("game-image").appendChild(divData);
-                setTimeout(function() {
-                    divData.style.opacity = "0.9";
-                }, 100);
-
                 
                 var tiempoTxt = document.getElementById("tempo")
                 tiempoTxt.innerHTML = "";
@@ -345,8 +327,26 @@ function startGame() {
                 personajesEncontrados = 0;
                 if(nivelGlobal < topeNiveles) {
 
-                    var tempo = 4;
-                    console.log(tempo);
+                    var divData = document.createElement("div");
+                    divData.classList.add("div-data");
+                    console.log("Misclick mensaje: "+errorNivel);
+                    if(errorNivel<0){
+                        errorNivel = 0;
+                    }
+                    
+                    divData.innerHTML = `
+                    <h1>¡NIVEL SUPERADO!</h1>
+                    <p class="text-victoria">Te han sobrado: </p>
+                    <p class="text-victoria-datos"> ${cronometro}s </p>
+                    <p class="text-derrota"> MissClick's: </p>
+                    <p class="text-derrota-datos">${errorNivel} / ${limiteErrores}</p>
+                    `;
+                    document.getElementById("game-image").appendChild(divData);
+                    setTimeout(function() {
+                        divData.style.opacity = "0.9";
+                    }, 100);
+
+                    var tempo = 20;
 
                     //Crear un contador para el cambio de nivel
 
@@ -362,14 +362,15 @@ function startGame() {
                         `;
 
                         tiempoTxt.innerHTML = interface;
+                        errorNivel=error;
                         if(tempo == 0) {
                             clearInterval(temporizador);
                             tiempoTxt.innerHTML = "";
-                            errorNivel = 0;
+                            
                             nivelGlobal++;
                             startGame();
-                        }
-                        tempo--;
+                            }
+                            tempo--;
                     },1000);
                 } else {
                     mostrarVictoria();
