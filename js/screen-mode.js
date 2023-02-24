@@ -246,7 +246,7 @@ function startGame() {
         document.getElementById("game-image").appendChild(personajes[i]);
     }
 
-    var imagenMapa = document.getElementById("game-image");
+    var imagenMapa = document.getElementById("game-img");
     imagenMapa.addEventListener("click", function() {
         errorNivel++;
         console.log("Fallo" + errorNivel);
