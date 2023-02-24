@@ -1,34 +1,34 @@
 
 // Variables globales
-var nivelActual = 0;
+
+var nivelGlobal = 0;
 
 var difStorage = localStorage.getItem("dificultad");
 var dificultad = parseInt(difStorage);
 
 var tiempo = 0;
 var opacidad = 0;
+var limiteErrores = 0;
 
 if(dificultad == 1){
     tiempo = 29;
     opacidad = 0.4;
+    limiteErrores = 3;
+    var niveles = seleccionNivelScreenFacil();
 }else if(dificultad == 2){
     tiempo =44;
     opacidad = 0.3;
+    limiteErrores = 2;
+    var niveles = seleccionNivelScreenMedio();
 }else if(dificultad == 3){
     tiempo =59;
     opacidad = 0.1;
+    limiteErrores = 1;
+    var niveles = seleccionNivelScreenDificil();
 }
-
-
+error = 0;
 count = 0;
-
-// Establecer los limites de game-img para crear las posiciones x e y de los personajes 
-//de forma aleatoria
-
-
-
-
-
+var cronometro = tiempo;
 
 function randomPosition(){
     var gameImg = document.querySelector(".game-image");
@@ -41,164 +41,99 @@ function randomPosition(){
     var y = Math.floor(Math.random() * gameImgHeight);
 
     //Validar que el personaje este siempre dentro de la imagen teniendo en cuenta el tamaño del personaje y las reglass css de la web
+    if(x > 1200){
 
+        //La posicion sera un numero aleatorio entre 1000 y 1200
+        
+        x = Math.floor(Math.random() * (1200 - 1000) + 1000);
+        
+    } 
+
+    if(y > 800){
+        y = Math.floor(Math.random() * (800 - 600) + 600);
+        
+    }
+
+    if(x < 400) {
+        x = Math.floor(Math.random() * (600 - 400) + 400);
+       
+    } 
+    if(y < 150){
+        y = Math.floor(Math.random() * (300 - 150) + 150);
+        
+    }
     return {x, y};
 }
 
-
-
-
 function startGame() {
-
-    var cronometro = tiempo;
-    var error = 0;
-    var timer = setInterval(function() {
-        // Actualizar el cronometro en el dom cada segundo (p class="text-tempo")
-
-        var interface = `
-        <p class="text-tempo">${cronometro} s</p>
-        `;
-
-    document.getElementById("tempo").innerHTML = interface;
-    cronometro--;
-    }, 1000);
-
-    var timeout = setTimeout(function() {
-            clearInterval(timer);
-            clearTimeout(timeout)
-            mostrarDerrota();
-    }, cronometro * 1000);
-    
-
-    niveles = seleccionNivel();
-    var nivelActivo = niveles[nivelActual];
-    console.log(niveles);
-    
-    
-    
-    
-    var topeNiveles = (niveles.length-1);
-    console.log(topeNiveles);
-    console.log(nivelActual);
-    console.log(nivelActivo);
-    console.log(niveles.length);
-
-    
-    // gestionar niveles y personajes
-    
-    var personajesNivel = nivelActivo.personajes;
-    
-    
-    
-    
-    function crearPersonajes(personajesNivel) {
-        var escenario = nivelActivo.imagen;
-        
-        var personajes = [];
-        for (var i = 0; i < personajesNivel.length; i++) {
-            var personaje = document.createElement("img");
-            personaje.src = personajesNivel[i].src;
-            personaje.id = personajesNivel[i].id;
-            personaje.classList.add("personaje");
-            personaje.style.position = "absolute";
-            personaje.style.left = personajesNivel[i].x + "px";
-            personaje.style.top = personajesNivel[i].y + "px";
-            personaje.style.width = personajesNivel[i].width + "px";
-            personaje.style.height = personajesNivel[i].height + "px";
-            personaje.style.zIndex = 100;
-            personaje.style.cursor = "pointer";
-            personaje.style.opacity = opacidad;
-            var interface = `
-            <img src="${escenario}" id="game-img" class="game-img"">
-            `;
-            document.getElementById("game-image").innerHTML = interface;
-            personajes.push(personaje);
-            
-            
-        }
-        
-        error = 0;
-        return personajes;
-    }
-
-
+    errorNivel = error;
+    console.log("Inicio nivel " + errorNivel);
 
     function mostrarVictoria() {
-    // Mostrar el mensaje de victoria en un pop up en forma de div
-
-    var victoria = document.getElementById("victoria");
-    victoria.style.display = "block";
-    // Mostrar el tiempo que ha tardado en encontrar a todos los personajes
-    var tiempoTXT = document.getElementById("tiempo");
-    
-    
-
-    var interface = `
-    <h1>¡Has ganado!</h1>
-    <p class="text-victoria">Te han sobrado: </p>
-    <p class="text-victoria-datos"> ${cronometro}s </p>
-    <p class="text-victoria">MissClicks: </p>
-    <p class="text-victoria-datos">${error+1}</p>
-    
-    `;
-    tiempoTXT.innerHTML = interface;
-    // Continuar y volver ala página de seleccion de niveles
-    error = 0;
-    var continuar = document.getElementById("continuar-btn");
-    continuar.addEventListener("click", function() {
         
-        if(nivelActual < topeNiveles){
-            
-            victoria.style.display = "none";
-            nivelActual++;
-            console.log("Nivel: " + nivelActual);
-            //Volver a cargar el juego con el nivel actual
-            cronometro
-            startGame();
+        var divData = document.createElement("div");
+        divData.classList.add("div-data");
 
-            //volver a mostrar los personajes en el game-menu
+        divData.innerHTML = `
+        <h1>¡Limite de Niveles!</h1>
+        <p class="text-derrota"> Niveles: </p>
+        <p class="text-derrota-datos">${nivelGlobal}</p>
+        <p class="text-derrota"> MissClick's: </p>
+        <p class="text-derrota-datos">${errorNivel} / ${limiteErrores}</p>
+         `;
+        document.getElementById("game-image").appendChild(divData);
+        setTimeout(function() {
+            divData.style.opacity = "0.9";
+        }, 100);
+
+        var tempo = 4;
+        console.log(tempo);
+
+        //Crear un contador para el cambio de nivel
+
+        var temporizador = setInterval(function() {
+
             var mostrar = document.querySelectorAll(".menu-characters-icon");
-            for (var i = 0; i < mostrar.length; i++) {
-                mostrar[i].style.display = "block";
-            }
-            
-        }else{
-            victoria.style.display = "none";
-            location.href = "./game-mode.html";
+                for (var i = 0; i < mostrar.length; i++) {
+                    mostrar[i].style.display = "block";
+
+                }
+
+                var interface = `
+                <p class="text-tempo-carga">Cambiando de nivel: ${tempo} s</p>
+                `;
+                tiempoTxt.innerHTML = interface;
+                if(tempo == 0) {
+                    clearInterval(temporizador);
+                    tiempoTxt.innerHTML = "";
+                    
+                    errorNivel = error
+                    location.href = "./game-mode.html";
+                }
+                tempo--;
+            },1000);
         }
-    });
-
-    var reiniciar = document.getElementById("reiniciar-btn");
-    reiniciar.addEventListener("click", function() {
-        victoria.style.display = "none";
-        // Reiniciar la pantalla
-        location.reload();
-
-    });
-    clearInterval(timer);
-    clearTimeout(timeout);
+                
     
-    }
-
     function mostrarDerrota() {
-        // Mostrar el mensaje de victoria en un pop up en forma de div
-    
-        var victoria = document.getElementById("victoria");
-        victoria.style.display = "block";
         
-        // Mostrar el tiempo que ha tardado en encontrar a todos los personajes
-        var tiempoTXT = document.getElementById("tiempo");
-        error = 0;
-        var interface = `
+        var divData = document.createElement("div");
+        divData.classList.add("div-data");
+                
+        divData.innerHTML = `
         <h1>¡Se ha acabado el tiempo!</h1>
         <p class="text-derrota"> Encontrados: </p>
         <p class="text-derrota-datos">${personajesEncontrados}</p>
         <p class="text-derrota"> Niveles: </p>
-        <p class="text-derrota-datos">${nivelActual-1}</p>
-        
+        <p class="text-derrota-datos">${nivelGlobal}</p>
+        <p class="text-derrota"> MissClick's: </p>
+        <p class="text-derrota-datos">${errorNivel} / ${limiteErrores}</p>
         
         `;
-        tiempoTXT.innerHTML = interface;
+        document.getElementById("game-image").appendChild(divData);
+        setTimeout(function() {
+            divData.style.opacity = "0.9";
+        }, 100);
         // Continuar y volver ala página de seleccion de niveles
         var personajesVivos = document.querySelectorAll(".personaje");
         for(var i = 0; i < personajesVivos.length; i++) {
@@ -207,87 +142,137 @@ function startGame() {
             personajesVivos[i].style.opacity = "1";
         }
         
-        var continuar = document.getElementById("continuar-btn");
-        continuar.display = "none";
+        var tempo = 4;
+        console.log(tempo);
+
+        //Crear un contador para el cambio de nivel
+
+        var temporizador = setInterval(function() {
+
+            var mostrar = document.querySelectorAll(".menu-characters-icon");
+            for (var i = 0; i < mostrar.length; i++) {
+                mostrar[i].style.display = "block";
+            }
+
+            var interface = `
+            <p class="text-tempo-carga">Reiniciando: ${tempo} s</p>
+            `;
+
+            tiempoTxt.innerHTML = interface;
+            if(tempo == 0) {
+                clearInterval(temporizador);
+                tiempoTxt.innerHTML = "";
+                errorNivel = error;
+                location.reload();
+            }
+            tempo--;
+        },1000);
+    } 
+
+    //Inicializar el cronometro
+    var cronometro = tiempo;
+    var tiempoTxt = document.getElementById("tempo")
+    var timer = setInterval(function() {
         
+    // Actualizar el cronometro en el dom cada segundo (p class="text-tempo")
     
-        var reiniciar = document.getElementById("reiniciar-btn");
-        reiniciar.addEventListener("click", function() {
-        victoria.style.display = "none";
-        // Reiniciar la pantalla
-        location.reload();
-
-        });
-
-
-    // Agregar el evento de click al boton de reiniciar
-
-    var reiniciar = document.getElementById("reiniciar-btn");
-    reiniciar.addEventListener("click", function() {
-        location.reload();
-    });
-
-    clearInterval(timer);
-    clearTimeout(timeout);
+    var interface = `
+    <p class="text-tempo">Nivel ${nivelGlobal+1} - ${cronometro} s</p>
+    `;
+   
+    tiempoTxt.innerHTML = interface;
     
-
-}
+    cronometro--;
+        if(cronometro < 0) {
+            clearInterval(timer);
+            var interface = `
+            <p class="text-tempo-carga">Nivel ${nivelGlobal} - Timeout</p>
+            `;
+            tiempoTxt.innerHTML = interface;
+            mostrarDerrota();
+        
+        }
+    },1000);
     
+   // Declarar niveles
+    
+    function sacarNivel(nivelGlobal) {
+        let nivel = niveles[nivelGlobal];
+        return nivel;
+    }
 
+    let nivel = sacarNivel(nivelGlobal);
+   
+    let personajesNivel = nivel.personajes;
+    let escenario = nivel.imagen;
+    let topeNiveles = (niveles.length-1);
+    let personajesEncontrados = 0;
+    
+    // Función para crear los personajes del nivel actual
+    function crearPersonajes(personajesNivel) {
+        let personajes = [];
+        //obtener la posicion aleatoria del personaje
+  
+        for (let i = 0; i < personajesNivel.length; i++) {
+            let personaje = document.createElement("img");
+            var pos = randomPosition();
+            var posX = pos.x;
+            var posY = pos.y;
+            personaje.src = personajesNivel[i].src;
+            personaje.id = personajesNivel[i].id;
+            personaje.classList.add("personaje");
+            personaje.style.position = "absolute";
+            personaje.style.left = posX + "px";
+            personaje.style.top = posY + "px";
+            personaje.style.width = personajesNivel[i].width + "px";
+            personaje.style.height = personajesNivel[i].height + "px";
+            personaje.style.zIndex = 100;
+            personaje.style.cursor = "pointer";
+            personaje.style.opacity = opacidad;
+            let interface = `
+            <img src="${escenario}" id="game-img" class="game-img"">
+            `;
+            document.getElementById("game-image").innerHTML = interface;
+            personajes.push(personaje);
+        }
+        return personajes;
+    }   
     // Crear los personajes del nivel actual
+    let personajes = crearPersonajes(personajesNivel);
 
-    var personajes = crearPersonajes(personajesNivel);
-    var personajesEncontrados = 0;
+    // Agregar los personajes al DOM
+    for(let i = 0; i < personajes.length; i++) {
+        document.getElementById("game-image").appendChild(personajes[i]);
+    }
+
     var imagenMapa = document.getElementById("game-image");
     imagenMapa.addEventListener("click", function() {
-        //Evitar que al pasar de nivel el click cuente el doble
-
-        if(personajesEncontrados == personajesNivel.length) return;
-
-        // Contar los errores
+        errorNivel++;
+        console.log("Fallo" + errorNivel);
+        if(errorNivel==limiteErrores) {
+            clearInterval(timer);
+            mostrarDerrota();
+        }
         
-        error++;
     });
 
     for(var i = 0; i < personajes.length; i++){
-        var pos = randomPosition();
-        
-        if(pos.x > 1200){
-            pos.x = 1200;
-            
-        } 
-
-        if(pos.y > 800){
-            pos.y = 800;
-            
-        }
-
-        if(pos.x < 400) {
-            pos.x = 400;
-           
-        } 
-        if(pos.y < 150){
-            pos.y = 150;
-            
-        }   
-
-
-        personajes[i].style.left = pos.x + "px";
-        personajes[i].style.top = pos.y + "px";
-
-
-        document.getElementById("game-image").appendChild(personajes[i]);
-
         // Agregar los eventos de click a los personajes
  
         personajes[i].addEventListener("click", function(e) {
 
-          
-            // Ocultar el personaje encontrado
-
             this.style.display = "none";
             personajesEncontrados++;
-            error--;
+
+            if((errorNivel < 0) || (errorNivel == 0) ) {
+                errorNivel = 0;
+                console.log("Personaje-2: " + errorNivel);
+            }else{
+                errorNivel--;
+                console.log("Personaje-2: " + errorNivel);
+            }
+
+            console.log("Personaje" + error);
             
             //Ocultar el personaje encontrado del array de personajes
 
@@ -295,64 +280,94 @@ function startGame() {
                 if(personajes[i].id == this.id) {
                     var ocultar = document.getElementById(personajes[i].id);
                     ocultar.style.display = "none"; 
-
-
                     personajes.splice(i, 1);
                 }
             }
 
             // Si el contador de personajes encontrados es igual al numero de personajes del nivel
 
-                if(personajes.length==0) {
+            if(personajes.length==0) {
 
-                    // Detener el cronometro
+                var divData = document.createElement("div");
+                divData.classList.add("div-data");
+                if(errorNivel<0){
+                    errorNivel = 0;
+                }
+                
+                divData.innerHTML = `
+                <h1>¡NIVEL SUPERADO!</h1>
+                <p class="text-victoria">Te han sobrado: </p>
+                <p class="text-victoria-datos"> ${cronometro}s </p>
+                <p class="text-derrota"> MissClick's: </p>
+                <p class="text-derrota-datos">${errorNivel} / ${limiteErrores}</p>
+                `;
+                document.getElementById("game-image").appendChild(divData);
+                setTimeout(function() {
+                    divData.style.opacity = "0.9";
+                }, 100);
 
-                    clearInterval(timer);
-                    clearTimeout(timeout);
-                    
+                
+                var tiempoTxt = document.getElementById("tempo")
+                tiempoTxt.innerHTML = "";
 
-                    // Guardar la puntuacion en el local storage
+                // Si el nivel actual es igual al tope de niveles
+
+                
+                clearInterval(timer);
+                // Guardar la puntuacion en el local storage
+
+                localStorage.setItem("puntuacion", cronometro + " s");
+                var puntuacionPlayer = localStorage.getItem("puntuacion");
+
+                if (puntuacionPlayer === null) {
+                    puntuacionPlayer = 0;
+                }
+                if (cronometro < puntuacionPlayer) {    
 
                     localStorage.setItem("puntuacion", cronometro + " s");
-                    var puntuacionPlayer = localStorage.getItem("puntuacion");
-
-
-                    if (puntuacionPlayer === null) {
-                        puntuacionPlayer = 0;
-                    }
-                    if (cronometro < puntuacionPlayer) {    
-
-                        localStorage.setItem("puntuacion", cronometro + " s");
-                    }
-
-                    
-
-                    if((cronometro < 0)) {
-                        mostrarDerrota();
-                        // Bordear de rojo los personajes que no se encontraron
-                        
-                    }else{
-                        mostrarVictoria();
-                    }
-                    personajesEncontrados = 0;
-                    
-                    
                 }
+                
+                personajesEncontrados = 0;
+                if(nivelGlobal < topeNiveles) {
 
+                    var tempo = 4;
+                    console.log(tempo);
+
+                    //Crear un contador para el cambio de nivel
+
+                    var temporizador = setInterval(function() {
+
+                        var mostrar = document.querySelectorAll(".menu-characters-icon");
+                        for (var i = 0; i < mostrar.length; i++) {
+                            mostrar[i].style.display = "block";
+                        }
+
+                        var interface = `
+                        <p class="text-tempo-carga">Siguiente nivel: ${tempo} s</p>
+                        `;
+
+                        tiempoTxt.innerHTML = interface;
+                        if(tempo == 0) {
+                            clearInterval(temporizador);
+                            tiempoTxt.innerHTML = "";
+                            errorNivel = 0;
+                            nivelGlobal++;
+                            startGame();
+                        }
+                        tempo--;
+                    },1000);
+                } else {
+                    mostrarVictoria();
+                }
+  
             }
-
-        );
-
+        });
     }
-
+    
 }
 
 
-function main() {
-    // Iniciar el juego
-    startGame();
- 
-}
+startGame();
 
-window.onload = main;
+
 

@@ -3,6 +3,8 @@
     window.onload = function() {
         var dificultad = localStorage.getItem("dificultad");
         localStorage.setItem("dificultad", dificultad);
+        //ocultar todos las descripciones
+
     }
     
     

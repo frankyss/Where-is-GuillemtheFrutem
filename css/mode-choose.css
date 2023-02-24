@@ -10,24 +10,33 @@
 
 /*Seleccion de nivel 3 imagenes en horzontal seleccionables*/
 
+.container-mode{
+    width: 100%;
+    /*poner de background-image varias urls*/
+
+    background-color: rgb(28, 29, 28);
+    padding: 25px 30px;
+    justify-content: center;
+}
+
 .levels-section{
     position: relative;
     width: auto;
-    height: 500px;
     display: block;
     margin: 0 auto;
-    
+    background-size: 100px;
     color: white;
     text-align: center;
+    margin-bottom: 70px;
 }
 
 .div-chapter{
     position: relative;
     display: inline-block;
-    padding: 5px;
+    padding: 15px;
     width: 250px;
-    height: 450px;
-    border: 2px solid white;
+    height: 500px;
+    border: 5px solid rgb(0, 0, 0);
     margin: 15px;
     top: 50px;
     background-color: aliceblue;
@@ -46,7 +55,29 @@
     margin: 0 auto;
     width: 100%;
     height: 200px;
-    
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.fondo1{
+    background-image: url("../imgs/characters/guillem.png");
+    background-color: rgb(255, 255, 255);
+    background-size: 35px;
+}
+.fondo2{
+    background-image: url("../imgs/characters/illo.png");
+    background-color: rgb(83, 76, 173);
+    background-size: 35px;
+}
+.fondo3{
+    background-image: url("../imgs/characters/bokeron.png");
+    background-color: rgb(133, 161, 32);
+    background-size: 30px;
+}
+.fondo4{
+    background-image: url("../imgs/characters/yannis.png");
+    background-color: rgb(197, 76, 55);
+    background-size: 40px;
 }
 
 .div-chapter h1{
@@ -54,19 +85,21 @@
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 10px;
-    color: black;
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0,0.7);
+    border-radius: 5px;
     font-family: 'Nova Square', cursive;}
 
 .big-button-chapter{
     position: relative;
     width: 150px;
-    height: 40px;
+    height: 50px;
     background-color: rgb(0, 0, 0);
     color: white;
     margin: 0 auto;
     border-radius: 5px;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 50px;
 }
 .button-chapter{
     position: relative;
@@ -99,6 +132,7 @@
     font-size: 14px;
     font-weight: 700;
     font-family: 'Nova Square', cursive;
+    width: 100%;
 }
 
 .chapter-menu{
@@ -160,29 +194,34 @@ option{
 
 .mode-description{
     position: relative;
-    width: 75%;
+    width: 65%;
     height: 50px;
-    color: black;
+    color: rgb(255, 255, 255);
     text-align: center;
-   margin: 0 auto;;
+    margin: 0 auto;;
     padding: 5px 10px;
     font-weight: 600;
     margin-top: 35px;
     display: none;
     margin-bottom: -15px;
+    display: none;
 }
 
 .mode-description p{
     font-size: 18px;
     font-weight: 600;
     font-family: 'Nova Square', cursive;
+    background: rgb(0, 0, 0, 0.6);
+    border: 2 px solid black;
+    border-radius: 5px;
+    padding: 20px;
 }
 
 .mode-description a{
     font-size: 18px;
     font-weight: 600;
     font-family: 'Nova Square', cursive;
-    color: black;
+    color: rgb(11, 145, 62);
    
 }
 
