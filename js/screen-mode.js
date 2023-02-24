@@ -240,12 +240,25 @@ function startGame() {
         return personajes;
     }   
     // Crear los personajes del nivel actual
-    let personajes = crearPersonajes(personajesNivel);
+   
+    personajes = crearPersonajes(personajesNivel);
 
     // Agregar los personajes al DOM
-    for(let i = 0; i < personajes.length; i++) {
-        document.getElementById("game-image").appendChild(personajes[i]);
-    }
+   
+        let time = 50;
+    
+        let cargaPersonajes = setInterval(function() {
+            console.log(time);
+            if(time == 0) {
+                clearInterval(cargaPersonajes);
+                for(let i = 0; i < personajes.length; i++) {
+                    document.getElementById("game-image").appendChild(personajes[i]);
+                }
+            }
+            time= time - 50;
+        },50);
+        
+    
 
     var imagenMapa = document.getElementById("game-img");
     imagenMapa.addEventListener("click", function() {
