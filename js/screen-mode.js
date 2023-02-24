@@ -205,6 +205,10 @@ function startGame() {
    
     let personajesNivel = nivel.personajes;
     let escenario = nivel.imagen;
+    let interface = `
+        <img src="${escenario}" id="game-img" class="game-img"">
+        `;
+        document.getElementById("game-image").innerHTML = interface;
     let topeNiveles = (niveles.length-1);
     let personajesEncontrados = 0;
     
@@ -214,10 +218,7 @@ function startGame() {
         //obtener la posicion aleatoria del personaje
   
         for (let i = 0; i < personajesNivel.length; i++) {
-            let interface = `
-            <img src="${escenario}" id="game-img" class="game-img"">
-            `;
-            document.getElementById("game-image").innerHTML = interface;
+            
             let personaje = document.createElement("img");
             var pos = randomPosition();
             var posX = pos.x;
