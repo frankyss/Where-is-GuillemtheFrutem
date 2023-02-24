@@ -17,6 +17,8 @@
     background-color: rgb(28, 29, 28);
     padding: 25px 30px;
     justify-content: center;
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
 }
 
 .levels-section{
