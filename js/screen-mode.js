@@ -214,6 +214,10 @@ function startGame() {
         //obtener la posicion aleatoria del personaje
   
         for (let i = 0; i < personajesNivel.length; i++) {
+            let interface = `
+            <img src="${escenario}" id="game-img" class="game-img"">
+            `;
+            document.getElementById("game-image").innerHTML = interface;
             let personaje = document.createElement("img");
             var pos = randomPosition();
             var posX = pos.x;
@@ -229,10 +233,7 @@ function startGame() {
             personaje.style.zIndex = 100;
             personaje.style.cursor = "pointer";
             personaje.style.opacity = opacidad;
-            let interface = `
-            <img src="${escenario}" id="game-img" class="game-img"">
-            `;
-            document.getElementById("game-image").innerHTML = interface;
+            
             personajes.push(personaje);
         }
         return personajes;
