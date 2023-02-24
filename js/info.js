@@ -10,6 +10,7 @@ var interface = `
         <p style="text-align: left;"><b>Classic Mode</b>: Encuentra a todos los fruits malagueños en las diferentes imágenes</p>
         <p style="text-align: left;"><b>Random Mode</b>: Encuentra a todos los fruits malagueños posicionados aleatoriamente en la imagen</p>
         <hr>
+        <p>Si te ha gustado el juego como si quieres ayudarme a mejorarlo estoy en Twitter <a href="https://twitter.com/devsky__" target="_blank">@devsky__</a></p>
         <p><b>¡Buena suerte!</b></p>
     `;
 var activo = false;
