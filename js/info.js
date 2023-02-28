@@ -3,12 +3,14 @@ var divInfo = document.querySelector(".infogame");
 
 var interface = `
         <h2>¿Cómo jugar?</h2>
-        <p>En cada nivel, deberás encontrar a Guillem the Frutem en la imagen. Para ello, deberás pulsar sobre la imagen. Si te equivocas, podrás volver a intentarlo.</p>
+        <p>En cada nivel, deberás encontrar a los Malagan Fruitis Avengers. Estos se han dispersado por todos los videojuegos. Haz click en ellos para reunirlos de nuevo</p>
         <hr>
-        <p style="text-align: left;"><b>Screenshoot Mode</b>: Encuentra a todos los fruits malagueños a través de diferentes videojuegos</p>
-        <p style="text-align: left;"><b>Cover Mode</b>: Encuentra Guillem the Frutten perdido entre las portadas de juegos</p>
-        <p style="text-align: left;"><b>Classic Mode</b>: Encuentra a todos los fruits malagueños en las diferentes imágenes</p>
-        <p style="text-align: left;"><b>Random Mode</b>: Encuentra a todos los fruits malagueños posicionados aleatoriamente en la imagen</p>
+        <p style="text-align: left;"><b>Fashi Mode</b>: Como en cada directo de Illojuan, las respuestas son super sencillas. Sino preguntale al chat</p>
+        <p style="text-align: center;"><b class="b-light">Tiempo</b>: 30s - <b class="b-light">MissClick's</b>: 3 permitidos  </p>
+        <p style="text-align: left;"><b>Illojuaner Mode</b>: Para aquellos que pasan más horas frente a una pantalla que junto a sus amigos. ¿A alguien le sobra un amigo?</p>
+        <p style="text-align: center;"><b class="b-light">Tiempo</b>: 45s - <b class="b-light">MissClick's</b>: 2 permitidos</p>
+        <p style="text-align: left;"><b>Nivel OGG's</b>: Dedicado a los auténticos <a href="https://www.ogsbrand.com/es/" >OGG's</a> . Os dejo esta pequeña tienda online de un par de malagueños que acaban de empezar. Toda ayuda es poca! </p>
+        <p style="text-align: center;"><b class="b-light">Tiempo</b>: 60s - <b class="b-light">MissClick's</b>: 1 permitidos</p>
         <hr>
         <p>Si te ha gustado el juego como si quieres ayudarme a mejorarlo estoy en Twitter <a href="https://twitter.com/devsky__" target="_blank">@devsky__</a></p>
         <p><b>¡Buena suerte!</b></p>
@@ -27,7 +29,15 @@ var iconoInfo = document.getElementById("info-game");
 });
 
 
-
+/* <div class="fashi mode-description">
+            <p><b>Nivel Fashi</b>: Como en cada directo de Illojuan, las respuestas son super sencillas. Sino preguntale al chat </p>
+        </div>
+        <div class="illojuaner mode-description">
+            <p><b>Nivel Illojuaner</b>: Para aquellos que pasan más horas frente a una pantalla que junto a sus amigos. ¿A alguien le sobra un amigo?</p>
+        </div>
+        <div class="oggs mode-description">
+            <p><b>Nivel OGG's</b>: Dedicado a los auténticos <a href="https://www.ogsbrand.com/es/" >OGG's</a> . Os dejo esta pequeña <br>tienda online de un par de malagueños que acaban de empezar. Toda ayuda es poca! </p>
+        </div> */
 
 
 

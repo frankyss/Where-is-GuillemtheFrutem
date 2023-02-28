@@ -51,21 +51,23 @@
                     <img src="./imgs/characters/yannis.png " class="animados">
                 </div>
                 <div id="home" class="divBtns">
+                    <h3>Introduce tu nickname</h3>
                     <input type="text" id="name" placeholder="Nickname">
                 
-                    <button class="btn" id="play-btn">
+                    <button class="big-button-chapter-start" id="play-btn">
                         Jugar
                     </button>
-                    <button class="btn-score" id="score-btn">
-                        Puntuaciones
+                    <button class="button-chapter-start" id="score-btn" onclick="location.href='highscores.html'">
+                        <a href="./highscores.html"  class="a-btn-chapter">Puntuaciones</a>
                     </button >
                 </div>
                 <script>
                     $(document).ready(function(){
                         $("#play-btn").click(function(){
                             var name = $("#name").val();
-                            if(name == ''){
+                            if((name == '') || (name == ' ') || (name == isNaN)){
                                 alert("Introduce tu nickname");
+                                location.reload();
                             }else{
                                 localStorage.setItem("name", name);
                                 window.location.href = "game-mode.html";

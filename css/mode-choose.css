@@ -24,22 +24,22 @@
 .levels-section{
     position: relative;
     width: auto;
+    height: 600px;
     display: block;
     margin: 0 auto;
     background-size: 100px;
     color: white;
     text-align: center;
-    margin-bottom: 70px;
 }
 
 .div-chapter{
     position: relative;
     display: inline-block;
     padding: 15px;
-    width: 250px;
+    width: 275px;
     height: 500px;
     border: 5px solid rgb(255, 255, 255);
-    margin: 15px;
+    margin: 15px 25px;
     top: 50px;
     background-color: aliceblue;
     border-radius: 5px;
@@ -60,12 +60,7 @@
     border: 2px solid rgb(255, 255, 255);
     border-radius: 5px;
 }
-b{
-    font-size: 25px;
-    font-family: 'Nova Square', cursive;
-    color: rgb(0, 255, 13);
-    font-weight: 700;
-}
+
 
 .fondo1{
     background-image: url("../imgs/characters/guillem.png");
@@ -98,50 +93,7 @@ b{
     border-radius: 5px;
     font-family: 'Nova Square', cursive;}
 
-.big-button-chapter{
-    position: relative;
-    width: 150px;
-    height: 50px;
-    background-color: rgb(0, 0, 0);
-    color: white;
-    margin: 0 auto;
-    border-radius: 5px;
-    align-items: center;
-    margin-top: 50px;
-}
-.button-chapter{
-    position: relative;
-    width: 100px;
-    height: 40px;
-    background-color: rgb(45, 134, 27);
-    color: white;
-    margin: 0 auto;
-    border-radius: 5px;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 15px;
-    
-}
-.big-button-chapter:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-    animation: 0.5s ease-in-out;
-}
 
-.button-chapter:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    animation: 0.5s ease-in-out;
-}
-
-.a-btn-chapter{
-    text-decoration: none;
-    color: rgb(0,255,13);
-    font-size: 20px;
-    font-weight: 700;
-    font-family: 'Nova Square', cursive;
-    width: 100%;
-}
 
 .chapter-menu{
     
@@ -241,7 +193,6 @@ option{
     text-align: center;
     padding: 5px 10px;
     font-weight: 600;
-    margin-top: 60px;
 }
 
 .exit{

@@ -5,7 +5,7 @@ var nivelGlobal = 0;
 
 
 var dificultad = 1;
-var niveles = seleccionNivelScreenFacil();
+
 var tiempo = 0;
 var opacidad = 0;
 var limiteErrores = 0;
@@ -14,6 +14,7 @@ if(dificultad == 1){
     tiempo = 29;
     opacidad = 0.4;
     limiteErrores = 3;
+    var niveles = seleccionNivelScreenFacil();
     
 }
 
