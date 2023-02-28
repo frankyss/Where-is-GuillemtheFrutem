@@ -112,6 +112,10 @@ function startGame() {
         
         var divData = document.createElement("div");
         divData.classList.add("div-data");
+
+        var audio = document.getElementById("audio-lose");
+        audio.volume=0.3;
+        audio.play();
                 
         divData.innerHTML = `
         <h1>¡NIVEL FALLIDO!</h1>
@@ -255,6 +259,9 @@ function startGame() {
 
     var imagenMapa = document.getElementById("game-img");
     imagenMapa.addEventListener("click", function() {
+        var errorSound = document.getElementById("audio-fallo");
+        errorSound.volume= 0.4;
+        errorSound.play();
         errorNivel++;
         console.log("Fallo" + errorNivel);
         if(errorNivel==limiteErrores) {
@@ -268,6 +275,10 @@ function startGame() {
         // Agregar los eventos de click a los personajes
  
         personajes[i].addEventListener("click", function(e) {
+
+            var aciertoSound = document.getElementById("audio-acierto");
+            aciertoSound.volume= 0.3;
+            aciertoSound.play();
 
             this.style.display = "none";
             personajesEncontrados++;
@@ -325,6 +336,10 @@ function startGame() {
                     if(errorNivel<0){
                         errorNivel = 0;
                     }
+                    
+                    var levelWinSound = document.getElementById("audio-next-level");
+                    levelWinSound.volume= 0.4;
+                    levelWinSound.play();
                     
                     divData.innerHTML = `
                     <h1>¡NIVEL SUPERADO!</h1>

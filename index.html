@@ -30,7 +30,7 @@
                     <li><a href="index.html"><img src="./imgs/pagina-de-inicio.png" class="menu-header-icons mb-5"></a> </li>
                     <li><a href="#"><img src="./imgs/informacion.png" class="menu-header-icons mb-5" id="info-game"></a> </li>
                     <li><a href="highscores.html"><img src="./imgs/medalla.png" class="menu-header-icons mb-5"></a> </li>
-                    <li><a href="#"><img src="./imgs/sonido.png" class="menu-header-icons mb-5"></a> </li>
+                    <li><a href="#"><img src="./imgs/sonido.png" class="menu-header-icons mb-5" id="play-mp3"></a> </li>
                     
                       
                 </ul>
@@ -79,6 +79,24 @@
         </div>
         
     </body>
+    <div class="audio-mp3-player">
+        <audio id="mp3-player" autoplay class="mp3-player" volume="0.1" style="display: none;"><source type="audio/wav" src="./sounds/all-star.mp3"></audio>
+        <script>
+        $(document).ready(function() {
+            var audioElement = document.getElementById('mp3-player');
+            audioElement.volume = 0.4;
+
+            var play = document.getElementById('play-mp3');
+            play.addEventListener('click', function() {
+                if (audioElement.paused) {
+                    audioElement.play();
+                } else {
+                    audioElement.pause();
+                }
+            });
+        });
+        </script>
+    </div>
     <script src="./js/info.js"></script>
     <footer>
         <small> Developed by Devsky_ ©2023 - Where's Guillem the Frutten</small>
