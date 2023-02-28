@@ -46,7 +46,7 @@
                 <li><a href="game-mode.html"><img src="./imgs/pagina-de-inicio.png" class="menu-header-icons mb-5"></a> </li>
                 <li><a href="#" ><img src="./imgs/informacion.png" class="menu-header-icons mb-5" id="info-game"></a> </li>
                 <li><a href="highscores.html" ><img src="./imgs/medalla.png" class="menu-header-icons mb-5"></a> </li>
-                <li><a href="#"><img src="./imgs/sonido.png" class="menu-header-icons mb-5"></a> </li>
+                <li><a href="#"><img src="./imgs/sonido.png" class="menu-header-icons mb-5" id="play-mp3"></a> </li>
                 
                   
             </ul>
@@ -77,11 +77,38 @@
         </div>
 
     </section>
-    <audio id="audio-lose" controls style="display:none"><source type="audio/wav" src="./sounds/partida-perdida.mp3"></audio>
-    <audio id="audio-next-level" controls style="display:none"><source type="audio/wav" src="./sounds/nivel-superado.mp3"></audio>
-    <audio id="audio-acierto" controls style="display:none"><source type="audio/wav" src="./sounds/acierto.mp3"></audio>
-    <audio id="audio-fallo" controls style="display:none"><source type="audio/wav" src="./sounds/missclick.mp3"></audio>
-   
+    <div class="audio-mp3-player"></div>
+        <audio id="audio-lose" controls style="display:none"><source type="audio/wav" src="./sounds/partida-perdida.mp3"></audio>
+        <audio id="audio-next-level" controls style="display:none"><source type="audio/wav" src="./sounds/nivel-superado.mp3"></audio>
+        <audio id="audio-acierto" controls style="display:none"><source type="audio/wav" src="./sounds/acierto.mp3"></audio>
+        <audio id="audio-fallo" controls style="display:none"><source type="audio/wav" src="./sounds/missclick.mp3"></audio>
+    
+        <script>
+        $(document).ready(function() {
+            var audioLose = document.getElementById('audio-lose');
+            var audioNextLevel = document.getElementById('audio-next-level');
+            var audioAcierto = document.getElementById('audio-acierto');
+            var audioFallo = document.getElementById('audio-fallo');
+
+            var play = document.getElementById('play-mp3');
+            play.addEventListener('click', function() {
+                //quitar el sonido
+
+                if (audioLose.muted == false) {
+                    audioLose.muted = true;
+                    audioNextLevel.muted = true;
+                    audioAcierto.muted = true;
+                    audioFallo.muted = true;
+                } else {
+                    audioLose.muted = false;
+                    audioNextLevel.muted = false;
+                    audioAcierto.muted = false;
+                    audioFallo.muted = false;
+                }
+            });
+        });
+        </script>
+    </div>
     <footer>
         <small> Developed by Devsky_ ©2023 - Where's Guillem the Frutten</small>
         <!-- Scripts -->

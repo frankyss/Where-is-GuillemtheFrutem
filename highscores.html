@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/highscores.css">
+    <link rel="stylesheet" href="./css/game.css">
+    <!-- Scripts -->
+
+    
+
+        <!--JQuery-->
+        <script src="./js/jQuery316.js"></script>
+
+        <!--JQuery UI-->
+        <link src="./js/jquery-ui-1.13.2/jquery-ui.min.css">
+        <link src="./js/jquery-ui-1.13.2/jquery-ui.structure.min.css">
+        <link src="./js/jquery-ui-1.13.2/jquery-ui.theme.min.css">
+        <script src="./js/jquery-ui-1.13.2/jquery-ui.min.js"></script>
+    
+    <title>Where is Guillem the Frutem</title>
+</head>
+
+
+<body>
+    <header id="#header">
+        <nav class="menu-header">
+            <ul class="info-menu">
+                <li><a href="index.html"><img src="./imgs/pagina-de-inicio.png" class="menu-header-icons mb-5"></a> </li>
+                <li><a href="#"><img src="./imgs/informacion.png" class="menu-header-icons mb-5" id="info-game"></a> </li>
+                <li><a href="highscores.html"><img src="./imgs/medalla.png" class="menu-header-icons mb-5"></a> </li>
+                <li><a href="#"><img src="./imgs/sonido.png" class="menu-header-icons mb-5" id="play-mp3"></a> </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container-mode">
+    
+    <div class="infogame">
+        
+    </div>
+    <section class="highscore-section">
+        <div class="div-chapter fondo1" id="chapter-1">
+            <h1>Top Mensual <br> Fashi Mode</h1>
+            <ul class="top-mensual-fashi"> </ul>
+        </div>
+        <div class="div-chapter fondo2" id="chapter-2">
+            <h1>Top Mensual <br> Illojuaner Mode </h1>
+            <ul class="top-mensual-illojuaner"> </ul>
+        </div>
+        <div class="div-chapter fondo3" id="chapter-3">
+            <h1>Top Mensual <br> OG's Mode</h1>
+            <ul class="top-mensual-ogs"> </ul>
+        </div>
+        <div class="div-chapter fondo1" id="chapter-3">
+            <h1>Top Histórico<br> Fashi Mode</h1>
+            <ul class="top-historico-fashi"> </ul>
+        </div>
+        <div class="div-chapter fondo2" id="chapter-3">
+            <h1>Top Histórico <br>Illojuaner Mode</h1>
+            <ul class="top-historico-illojuaner"> </ul>
+           
+        </div>
+        <div class="div-chapter fondo3" id="chapter-3">
+            <h1>Top Histórico <br>OG's Mode</h1>  
+            <ul class="top-historico-ogs"> </ul>         
+        </div>
+        
+      
+    </section>
+    
+    <div class="salida">
+        <button class="big-button-chapter" id="" onclick="location.href='index.html'">
+            <a href="index.html"  class="a-btn-chapter">Salir</a>
+        </button >
+    </div>
+</div>
+    </div>
+    <div class="audio-mp3-player">
+        <audio id="mp3-player" autoplay class="mp3-player" volume="0.1" style="display: none;"><source type="audio/wav" src="./sounds/welcome-to-the-jungle.mp3"></audio>
+        <script>
+        $(document).ready(function() {
+            var audioElement = document.getElementById('mp3-player');
+            audioElement.volume = 0.05;
+
+            var play = document.getElementById('play-mp3');
+            play.addEventListener('click', function() {
+                if (audioElement.paused) {
+                    audioElement.play();
+                } else {
+                    audioElement.pause();
+                }
+            });
+        });
+        </script>
+    </div>
+    <footer>
+        <small> Developed by Devsky_ ©2023 - Where's Guillem the Frutten</small>
+        <!-- Scripts-->
+
+        <script src="./js/info.js"></script>
+        <script src="./js/highcores.js"></script>
+
+    </footer>
+</body>
+    
+</html>

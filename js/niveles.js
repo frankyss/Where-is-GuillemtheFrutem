@@ -188,7 +188,7 @@ function seleccionNivelScreenFacil() {
     },
     {
         nombre: "Ratchet & Clank: Future Tools of Destruction",
-        imagen: "./imgs/levels/easy/1-ratchet-and-clank-future-tools-of-destruction.jpg",
+        imagen: "./imgs/levels/easy/1-ratchet-clank-future-tools-of-destruction.jpg",
         personajes: [
             {id:"guillem", x: 0 , y:0, width: 30, height: 30, src: "./imgs/characters/guillem.png"},
             {id:"illo", x: 0 , y:0, width: 30, height: 30 , src: "./imgs/characters/illo.png"},

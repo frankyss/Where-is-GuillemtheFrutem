@@ -1,9 +1,10 @@
 
 // Variables globales
 
+//localStorage.removeItem("bestLevel");
+//localStorage.removeItem("nivel");
+
 var nivelGlobal = 0;
-
-
 var dificultad = 1;
 
 var tiempo = 0;
@@ -292,11 +293,7 @@ function startGame() {
             if((errorNivel <= 0) ) {
                 errorNivel = 0;
                 //console.log("Personaje-2: " + errorNivel);
-            }else{
-                console.log("Personaje-2: " + errorNivel);
             }
-
-            console.log("Personaje salida" + error);
             
             //Ocultar el personaje encontrado del array de personajes
 
@@ -320,24 +317,26 @@ function startGame() {
                 
                 clearInterval(timer);
                 // Guardar la puntuacion en el local storage
+                var nivelHighScore = nivelGlobal+1;
+                localStorage.setItem("nivel", 0);
+                var puntuacionPlayer = localStorage.getItem("nivel");
+                var bestLevel = localStorage.getItem("bestLevel");
 
-                localStorage.setItem("puntuacion", cronometro + " s");
-                var puntuacionPlayer = localStorage.getItem("puntuacion");
 
+                
+                if (puntuacionPlayer > bestLevel) {    
+
+                    localStorage.setItem("bestLevel", nivelHighScore);
+                }
                 if (puntuacionPlayer === null) {
                     puntuacionPlayer = 0;
                 }
-                if (cronometro < puntuacionPlayer) {    
-
-                    localStorage.setItem("puntuacion", cronometro + " s");
-                }
                 
                 personajesEncontrados = 0;
-                if(nivelGlobal < topeNiveles) {
+                if(bestLevel < topeNiveles) {
 
                     var divData = document.createElement("div");
                     divData.classList.add("div-data");
-                    console.log("Misclick mensaje: "+errorNivel);
                     if(errorNivel<0){
                         errorNivel = 0;
                     }
