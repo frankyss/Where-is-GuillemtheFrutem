@@ -9,7 +9,7 @@ var interface = `
         <p style="text-align: center;"><b class="b-light">Tiempo</b>: 30s - <b class="b-light">MissClick's</b>: 3 permitidos  </p>
         <p style="text-align: left;"><b>Illojuaner Mode</b>: Para aquellos que pasan más horas frente a una pantalla que junto a sus amigos. ¿A alguien le sobra un amigo?</p>
         <p style="text-align: center;"><b class="b-light">Tiempo</b>: 45s - <b class="b-light">MissClick's</b>: 2 permitidos</p>
-        <p style="text-align: left;"><b>Nivel OGG's</b>: Dedicado a los auténticos <a href="https://www.ogsbrand.com/es/" >OGG's</a> . Os dejo esta pequeña tienda online de un par de malagueños que acaban de empezar. Toda ayuda es poca! </p>
+        <p style="text-align: left;"><b>Nivel OG's</b>: Dedicado a los auténticos <a href="https://www.ogsbrand.com/es/" >OGG's</a> . Os dejo esta pequeña tienda online de un par de malagueños que acaban de empezar. Toda ayuda es poca! </p>
         <p style="text-align: center;"><b class="b-light">Tiempo</b>: 60s - <b class="b-light">MissClick's</b>: 1 permitidos</p>
         <hr>
         <p>Si te ha gustado el juego como si quieres ayudarme a mejorarlo estoy en Twitter <a href="https://twitter.com/devsky__" target="_blank">@devsky__</a></p>
@@ -27,17 +27,4 @@ var iconoInfo = document.getElementById("info-game");
             activo = false;
         }
 });
-
-
-/* <div class="fashi mode-description">
-            <p><b>Nivel Fashi</b>: Como en cada directo de Illojuan, las respuestas son super sencillas. Sino preguntale al chat </p>
-        </div>
-        <div class="illojuaner mode-description">
-            <p><b>Nivel Illojuaner</b>: Para aquellos que pasan más horas frente a una pantalla que junto a sus amigos. ¿A alguien le sobra un amigo?</p>
-        </div>
-        <div class="oggs mode-description">
-            <p><b>Nivel OGG's</b>: Dedicado a los auténticos <a href="https://www.ogsbrand.com/es/" >OGG's</a> . Os dejo esta pequeña <br>tienda online de un par de malagueños que acaban de empezar. Toda ayuda es poca! </p>
-        </div> */
-
-
 

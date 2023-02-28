@@ -1153,8 +1153,8 @@ function seleccionNivelScreenDificil() {
             ]
         },
         {
-            nombre: "Blodborne",
-            imagen: "./imgs/levels/hard/2-blodborne.jpg",
+            nombre: "Bloodborne",
+            imagen: "./imgs/levels/hard/2-bloodborne.jpg",
             personajes: [
              {id:"guillem", x: 0 , y:0, width: 25, height: 25, src: "./imgs/characters/guillem.png"},
              {id:"illo", x: 0 , y:0, width: 25, height: 25 , src: "./imgs/characters/illo.png"},
